@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>나의 포트폴리오</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      height: 100vh;
+    }
+    header {
+      background-color: #282c34;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      width: 200px;
+      background-color: #f4f4f4;
+      padding-top: 20px;
+      height: 100vh;
+      position: fixed;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav li {
+      padding: 10px;
+      cursor: pointer;
+    }
+    nav li:hover {
+      background-color: #ddd;
+    }
+    .submenu {
+      list-style: none;
+      padding-left: 20px;
+      display: none;
+    }
+    .submenu li {
+      font-size: 0.9em;
+    }
+    main {
+      margin-left: 200px;
+      padding: 20px;
+      flex: 1;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    .skill-bar {
+      margin: 10px 0;
+    }
+    .bar {
+      height: 20px;
+      background-color: #eee;
+    }
+    .fill {
+      height: 100%;
+      background-color: #4caf50;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #282c34;
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li onclick="showSection('intro')">소개</li>
+      <li onclick="showSection('skills')">기술</li>
+      <li onclick="toggleSubmenu()">프로젝트</li>
+      <ul class="submenu" id="project-submenu">
+        <li onclick="showProject('project1')">서울시 범죄 데이터 분석</li>
+        <li onclick="showProject('project2')">초등학교 폐교 데이터 분석</li>
+        <li onclick="showProject('project3')">위로UP 감정분석 플랫폼</li>
+      </ul>
+      <li onclick="showCertificateDelayed()">자격증/교육</li>
+    </ul>
+  </nav>
+
+  <main>
+    <header>
+      <h1>데이터로 세상을 이해하는 분석가</h1>
+      <p>숫자 속에 숨겨진 이야기를 찾아내는 사람입니다.</p>
+    </header>
+
+<section id="intro" class="active" style="padding: 20px;">
+  <h2>자기소개서</h2>
+
+  <div style="
+    max-width: 600px;
+    margin: 0 auto;      /* 이 부분이 내용 중앙 정렬 */
+    padding-top: 20px;
+  ">
+    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <img src="profile.jpg" alt="프로필 이미지" style="width:150px; height:150px; border-radius: 50%; object-fit: cover;">
+      <div>
+        <h2>홍길동</h2>
+        <p>학교: OO대학교 수학과 / 빅데이터공학과</p>
+        <p>성격: 분석적이고 책임감이 강하며 협업을 중시합니다.</p>
+      </div>
+    </div>
+
+    <hr style="margin: 20px 0 10px; border: 0; border-top: 2px solid #ccc;">
+
+    <p style="margin-bottom: 10px;">나이</p>
+
+    <hr style="border: 0; border-top: 1px solid #ddd;">
+  </div>
+</section>
+
+<section id="skills">
+  <h2>기술</h2>
+  <div style="display: flex; justify-content: center;">
+    <table cellspacing="0" cellpadding="8" style="border-collapse: collapse; width: 80%; max-width: 800px;">
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="padding: 8px; text-align: left;">기술</th>
+        <th style="padding: 8px; text-align: left;">수준 (★)</th>
+        <th style="padding: 8px; text-align: left;">경험 방식</th>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">Python</td>
+        <td style="padding: 8px;">★★★★☆</td>
+        <td style="padding: 8px;">Pandas로 EDA, 시각화, Scikit-learn으로 모델링 수행</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">SQL</td>
+        <td style="padding: 8px;">★★★☆☆</td>
+        <td style="padding: 8px;">SELECT, JOIN, GROUP BY 중심의 쿼리 실습</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">Excel</td>
+        <td style="padding: 8px;">★★★★☆</td>
+        <td style="padding: 8px;">피벗, 함수, 조건부 서식, 대시보드 제작</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">Tableau</td>
+        <td style="padding: 8px;">★★★☆☆</td>
+        <td style="padding: 8px;">시각화 및 스토리텔링용 대시보드 제작</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+    <section id="project1">
+  <h2>서울시 범죄 데이터 분석</h2>
+  <div style="display: flex; gap: 30px; align-items: flex-start; border-top: 1px solid #ccc; padding-top: 20px;">
+
+    <!-- 왼쪽: 이미지 두 개 (위아래) -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+      <img src="crime_map1.jpg" alt="범죄 분석 지도1" style="width: 100%; max-width: 100%; height: auto; border: 1px solid #ccc;">
+      <img src="crime_chart1.jpg" alt="범죄 분석 차트1" style="width: 100%; max-width: 100%; height: auto; border: 1px solid #ccc;">
+    </div>
+
+    <!-- 중앙 세로선 -->
+    <div style="width: 1px; background-color: #ccc; height: auto;"></div>
+
+    <!-- 오른쪽: 설명 -->
+    <div style="flex: 2; padding-left: 20px;">
+      <p><strong>프로젝트 개요:</strong> 서울시 자치구별 범죄 데이터와 인구 데이터를 활용하여 범죄 발생 요인을 분석하고 지역별 시정 대안을 도출한 프로젝트입니다.</p>
+      <p><strong>나의 역할:</strong> Python(Pandas)로 데이터 전처리 및 통계 분석, Excel로 비교 지표 정리, Tableau로 시각화 대시보드 제작</p>
+      <p><strong>사용 툴:</strong> Python, Excel, Tableau</p>
+      <p><strong>성과:</strong> 강남·관악·영등포구 등 특정 지역에 범죄 집중 현상 확인. 인구·CCTV·유흥업소 밀집도와의 상관분석을 통해 정책 제안 도출</p>
+      <a href="서울시범죄_분석_보고서.pdf" target="_blank">📄 보고서 보기</a>
+    </div>
+  </div>
+</section>
+
+    <section id="project2">
+      <h2>교육 데이터 분석</h2>
+  <div style="display: flex; gap: 30px; align-items: flex-start; border-top: 1px solid #ccc; padding-top: 20px;">
+
+    <!-- 왼쪽: 이미지 두 개 (위아래) -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+      <img src="crime_map1.jpg" alt="범죄 분석 지도1" style="width: 100%; max-width: 100%; height: auto; border: 1px solid #ccc;">
+      <img src="crime_chart1.jpg" alt="범죄 분석 차트1" style="width: 100%; max-width: 100%; height: auto; border: 1px solid #ccc;">
+    </div>
+
+    <!-- 중앙 세로선 -->
+    <div style="width: 1px; background-color: #ccc; height: auto;"></div>
+
+    <!-- 오른쪽: 설명 -->
+    <div style="flex: 2; padding-left: 20px;">
+      <p><strong>프로젝트 개요:</strong> 서울시 자치구별 범죄 데이터와 인구 데이터를 활용하여 범죄 발생 요인을 분석하고 지역별 시정 대안을 도출한 프로젝트입니다.</p>
+      <p><strong>나의 역할:</strong> Python(Pandas)로 데이터 전처리 및 통계 분석, Excel로 비교 지표 정리, Tableau로 시각화 대시보드 제작</p>
+      <p><strong>사용 툴:</strong> Python, Excel, Tableau</p>
+      <p><strong>성과:</strong> 강남·관악·영등포구 등 특정 지역에 범죄 집중 현상 확인. 인구·CCTV·유흥업소 밀집도와의 상관분석을 통해 정책 제안 도출</p>
+      <a href="서울시범죄_분석_보고서.pdf" target="_blank">📄 보고서 보기</a>
+    </div>
+  </div>
+    </section>
+
+    <section id="project3">
+       <h2>환경 데이터 분석</h2>
+  <div style="display: flex; gap: 30px; align-items: flex-start; border-top: 1px solid #ccc; padding-top: 20px;">
+
+    <!-- 왼쪽: 이미지 두 개 (위아래) -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+      <img src="crime_map1.jpg" alt="범죄 분석 지도1" style="width: 100%; max-width: 100%; height: auto; border: 1px solid #ccc;">
+      <img src="crime_chart1.jpg" alt="범죄 분석 차트1" style="width: 100%; max-width: 100%; height: auto; border: 1px solid #ccc;">
+    </div>
+
+    <!-- 중앙 세로선 -->
+    <div style="width: 1px; background-color: #ccc; height: auto;"></div>
+
+    <!-- 오른쪽: 설명 -->
+    <div style="flex: 2; padding-left: 20px;">
+      <p><strong>프로젝트 개요:</strong> 서울시 자치구별 범죄 데이터와 인구 데이터를 활용하여 범죄 발생 요인을 분석하고 지역별 시정 대안을 도출한 프로젝트입니다.</p>
+      <p><strong>나의 역할:</strong> Python(Pandas)로 데이터 전처리 및 통계 분석, Excel로 비교 지표 정리, Tableau로 시각화 대시보드 제작</p>
+      <p><strong>사용 툴:</strong> Python, Excel, Tableau</p>
+      <p><strong>성과:</strong> 강남·관악·영등포구 등 특정 지역에 범죄 집중 현상 확인. 인구·CCTV·유흥업소 밀집도와의 상관분석을 통해 정책 제안 도출</p>
+      <a href="서울시범죄_분석_보고서.pdf" target="_blank">📄 보고서 보기</a>
+    </div>
+  </div>
+    </section>
+
+ <section id="certificates">
+  <h2>자격증 / 교육</h2>
+  <div style="display: flex; justify-content: center;">
+    <table cellspacing="0" cellpadding="8" style="border-collapse: collapse; width: 80%; max-width: 800px;">
+      <tr style="border-bottom: 1px solid #ccc;">
+        <th style="padding: 8px; text-align: left;">이름</th>
+        <th style="padding: 8px; text-align: left;">기관</th>
+        <th style="padding: 8px; text-align: left;">취득일</th>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">빅데이터 분석기사 (실기 준비중)</td>
+        <td style="padding: 8px;">한국데이터산업진흥원</td>
+        <td style="padding: 8px;">-</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px;">정보처리기사</td>
+        <td style="padding: 8px;">한국산업인력공단</td>
+        <td style="padding: 8px;">2024.11</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">데이터 분석 부트캠프</td>
+        <td style="padding: 8px;">OO교육기관</td>
+        <td style="padding: 8px;">2025.03 ~ 2025.06</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+    <footer>
+      <p>📧 이메일: your_email@example.com</p>
+      <p>감사합니다! 😊</p>
+    </footer>
+  </main>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById('project-submenu').style.display = 'none';
+      if (id !== 'certificates') document.getElementById('cert-table').style.display = 'none';
+    }
+
+    function showProject(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById('cert-table').style.display = 'none';
+    }
+
+    function showCertificateDelayed() {
+  showSection('certificates');
+  const loadingText = document.getElementById('loading-text');
+  const certTable = document.getElementById('cert-table');
+
+  // 처음에는 로딩 텍스트 보여주고 표는 숨김
+  loadingText.style.display = 'block';
+  certTable.style.display = 'none';
+
+  setTimeout(() => {
+    // 1.5초 후 로딩 텍스트 숨기고 표 보여주기
+    loadingText.style.display = 'none';
+    certTable.style.display = 'block';
+  }, 1500);
+}
+
+    function toggleSubmenu() {
+      const submenu = document.getElementById('project-submenu');
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
